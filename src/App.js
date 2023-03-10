@@ -1,24 +1,9 @@
 
 import './style.css';
 import React from 'react';
-import $ from 'jquery';
-import InputCustomizado from './componentes/InputCustomizado';
+
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      lista : [ ],
-      name :  '',
-      email : '',
-      password : '',
-      password_confirmation: '',
-    }
-    this.enviaForm = this.enviaForm.bind(this);
-    this.setName = this.setName.bind(this);
-    this.setEmail = this.setEmail.bind(this);
-    this.setPassword = this.setPassword.bind(this);
-    this.setPasswordConfirmation = this.setPasswordConfirmation.bind(this);
-  }
+
 
   enviaForm(evento) {
     evento.preventDefault();
