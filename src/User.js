@@ -52,16 +52,16 @@ export function UserForm() {
         <h1 class="h2">Cadastro de Usuários</h1>						
         <form method="post" onSubmit={this.enviaForm}>
 
-            <InputCustomizado type="text" id="name" name="name" value={this.state.name} 
-            onChange={e => setName(e.target.value)} placeholder="Nome" label="Name" />
+            <InputCustomizado type="text" id="name" name="name" value={nome} 
+            onChange={e => setNome(e.target.value)} placeholder="Nome" label="Name" />
 
-            <InputCustomizado type="email" id="email" name="email" value={this.state.email} 
+            <InputCustomizado type="email" id="email" name="email" value={email} 
             onChange={e => setEmail(e.target.value)} placeholder="E-mail" label="Email" />
 
-            <InputCustomizado type="password" id="password" name="password" value={this.state.password} 
+            <InputCustomizado type="password" id="password" name="password" value={password} 
             onChange={e => setPassword(e.target.value)} placeholder="Password" label="Password" />
 
-            <InputCustomizado type="password" id="password_confirmation" name="password_confirmation" value={this.state.password_confirmation} 
+            <InputCustomizado type="password" id="password_confirmation" name="password_confirmation" value={password_confirmation} 
             onChange={e => setPassword_confirmation(e.target.value)} placeholder="Confirme" label="confirme"/>
 
 
@@ -74,6 +74,40 @@ export function UserForm() {
 
 
 
-export class UserTable extends Component {
+export function UserTable () {
+const [lista, setLista] = useState([]);
+    return(
+
+
+        <div class="table-responsive">
+        <h2>Usuários</h2>
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>E-mail</th>
+            </tr>
+          </thead>
+          <tbody>					
+            {
+                
+              lista.map(function(user){
+                return(
+                  <tr>
+                    <td>{user.id}</td>
+                    <td>{user.nome}</td>
+                    <td>{user.email}</td>
+                  </tr>		
+
+                )
+              })
+            }
+          </tbody>
+        </table>
+      </div>
+
+
+    );
 
 }

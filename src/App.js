@@ -1,66 +1,11 @@
 
 import './style.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { UserForm, UserTable } from './User';
 
-class App extends React.Component {
+function App() {
+ return (
 
-
-  enviaForm(evento) {
-    evento.preventDefault();
-    console.log("dados sendo enviados...");
-
-    $.ajax({
-      url: "https://profitmanager.onrender.com/api/v2/auth",
-
-      contentType:'application/json',
-      dataType: 'json',
-      accept: 'application/json',
-
-      type: 'post',
-      data: JSON.stringify(
-        {
-          name: this.state.name,
-          email: this.state.email,
-          password: this.state.password,
-          password_confirmation: this.state.password_confirmation,
-        }
-      ),
-      success: function(resposta) {
-        console.log("Sucesso!");
-        console.log("resposta");
-      },
-      complete: function(resposta){
-        console.log("Complete!!");
-      },
-      error: function(resposta){
-        console.log("Error...");
-      }
-
-    });
-
-
-  }
-
-  
-  setName(evento){
-    this.setState( { name : evento.target.value } );
-
-  }
-  setEmail(evento){
-    this.setState( { email : evento.target.value } );
-    
-  }
-  setPassword(evento){
-    this.setState( { password : evento.target.value } );
-    
-  }
-  setPasswordConfirmation(evento){
-    this.setState( { password_confirmation : evento.target.value } );
-    
-  }
-  
-  render () {
-    return (
         
       <div>
     
@@ -117,56 +62,10 @@ class App extends React.Component {
           <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             
             <br />
-            
-            <div>						
-              <h1 class="h2">Cadastro de Usuários</h1>						
-              <form method="post" onSubmit={this.enviaForm}>
-
-                <InputCustomizado type="text" id="name" name="name" value=
-                {this.state.name} onChange={this.setName} placeholder="Nome" label="Name" />
-
-                <InputCustomizado type="email" id="email" name="email" value=
-                {this.state.email} onChange={this.setEmail} placeholder="E-mail" label="Email" />
-
-                <InputCustomizado type="password" id="password" name="password" value=
-                {this.state.password} onChange={this.setPassword} placeholder="Password" label="Password" />
-
-                <InputCustomizado type="password" id="password_confirmation" name="password_confirmation" value=
-                {this.state.password_confirmation} onChange={this.setPasswordConfirmation} placeholder="Confirme" label="confirme"/>
-
-
-                <button type="submit" class="btn btn-primary">Inscrever-se</button>
-              </form>						
-            </div>
-  
+        <UserForm/>
             <br />
             
-            <div class="table-responsive">
-              <h2>Usuários</h2>
-              <table class="table table-striped table-sm">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>E-mail</th>
-                  </tr>
-                </thead>
-                <tbody>					
-                  {
-                    this.state.lista.map(function(user){
-                      return(
-                        <tr>
-                          <td>{user.id}</td>
-                          <td>{user.nome}</td>
-                          <td>{user.email}</td>
-                        </tr>		
-
-                      )
-                    })
-                  }
-                </tbody>
-              </table>
-            </div>
+          <UserTable/>           
             
           </main>
           
@@ -175,7 +74,8 @@ class App extends React.Component {
       
     </div>
     );
-  }
 }
+
+
 
 export default App;
