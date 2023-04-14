@@ -1,7 +1,7 @@
 
 import './style.css';
 import React from 'react';
-import { UserForm, UserTable } from './User';
+import  UserBox  from './User';
 
 function App() {
   return (
@@ -60,11 +60,8 @@ function App() {
           <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             
             <br />
-        <UserForm/>
-            <br />
-            
-          <UserTable/>           
-            
+        <UserBox/>
+
           </main>
           
         </div>

@@ -1,4 +1,4 @@
-import  React, { useState, useEffect } from 'react';
+import  React, { useState, useEffect, Component } from 'react';
 import PubSub from 'pubsub-js';
 import $ from 'jquery';
 import InputCustomizado from './componentes/InputCustomizado';
@@ -153,4 +153,19 @@ export function UserTable () {
 
   );
 
+}
+
+export default class UserBox extends Component {
+    render(){
+
+      return(
+        <div>
+          <UserForm />
+          <br/>
+          <Usertable />
+        </div>
+
+       );
+
+    }
 }
